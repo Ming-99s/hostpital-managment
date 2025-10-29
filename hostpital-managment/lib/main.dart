@@ -4,12 +4,12 @@ import 'domain/services/appointmentManager.dart';
 import 'domain/models/doctor.dart';
 import 'domain/models/patient.dart';
 import 'domain/models/appointment.dart';
-import 'ui/screens/console.dart';
+import 'ui/screens/auth_console.dart';
 
 /// Hospital Management System - Main Entry Point
-/// 
+///
 /// This is the main entry point for the Hospital Management System.
-/// It initializes the system with sample data and starts the console interface.
+/// It initializes the system with sample data and starts the authentication console.
 void main() {
   print('🏥 Welcome to Hospital Management System');
   print('========================================');
@@ -29,9 +29,9 @@ void main() {
     print('   - Total Appointments: ${stats['totalAppointments']}');
     print('');
     
-    // Start the console interface
-    final console = HospitalConsole(appointmentManager);
-    console.start();
+    // Start the authentication console
+    final authConsole = AuthConsole(appointmentManager);
+    authConsole.start();
     
   } catch (e) {
     print('❌ Error initializing system: $e');

@@ -3,6 +3,24 @@ name: Appointment_System
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
+dependencies:
+  # Database dependencies
+  sqflite: ^2.3.0
+  mysql1: ^0.20.0
+  mysql_client: ^0.0.27
+  path: ^1.8.3
+  
+  # Utility dependencies
+  uuid: ^4.4.2
+  dotenv: ^4.2.0
+  
+  # Logging and error handling
+  logging: ^1.2.0
+  
+  # Date and time utilities
+  intl: ^0.18.1
+
 dev_dependencies:
   test: ^1.25.0
-  uuid: ^4.4.2
+  mockito: ^5.4.2
+  build_runner: ^2.4.7
