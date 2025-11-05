@@ -3,6 +3,7 @@ import '../domain/user.dart';
 import '../domain/patient.dart';
 import '../domain/doctor.dart';
 import '../domain/authService.dart';
+import 'adminDashboard.dart';
 import 'patientDashboard.dart';
 
 class Auth {
@@ -99,6 +100,7 @@ class Auth {
               print('✅ Logged in as Doctor! Welcome, ${user.username}');
             } else if (user.type == UserType.admin) {
               print('✅ Logged in as Admin! Welcome, ${user.username}');
+              AdminDashboard(authService.appointmentManager).startAdminDashboard(user);
             }
           } else {
             print('❌ Invalid password!');
