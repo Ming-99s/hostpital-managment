@@ -8,8 +8,9 @@ import 'domain/appointment.dart';
 
 void main() {
   // Load users and appointments from JSON
-  UserRepository userRepo = UserRepository('./data/users.json');
-  AppointmentRepository appRepo = AppointmentRepository('./data/appointments.json');
+  UserRepository userRepo = UserRepository('hostpital-managment/lib/data/users.json');
+  AppointmentRepository appRepo =
+      AppointmentRepository('hostpital-managment/lib/data/appointments.json');
 
   List<User> users = userRepo.readUsers();
   List<Appointment> appointments = appRepo.readAppointments();
@@ -21,7 +22,8 @@ void main() {
   );
 
   // Create AuthService
-  AuthService authService = AuthService(users: users,appointmentManager: appointmentManager);
+  AuthService authService =
+      AuthService(users: users, appointmentManager: appointmentManager);
 
   // Start the Auth UI
   Auth authUI = Auth(authService: authService);
