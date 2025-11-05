@@ -1,0 +1,18 @@
+{
+  "appointments": [
+    {
+      "appointmentId": "ee946630-173e-486d-acb5-763bc3e995a2",
+      "patientId": "uuid-2",
+      "doctorId": "uuid-3",
+      "dateTime": "2025-11-07T14:00:00.000",
+      "appointmentStatus": "AppointmentStatus.pending"
+    },
+    {
+      "appointmentId": "bdde37e0-38f8-40f4-9c3c-2f6dad0a19fe",
+      "patientId": "313d516d-266d-49be-a886-58b5f4c00c6f",
+      "doctorId": "313d516d-266d-49be-a886-58b5f4c00ca",
+      "dateTime": "2025-11-07T10:00:00.000",
+      "appointmentStatus": "AppointmentStatus.pending"
+    }
+  ]
+}
