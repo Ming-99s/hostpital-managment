@@ -54,6 +54,5 @@ class AppointmentRepository {
     };
 
     file.writeAsStringSync(JsonEncoder.withIndent('  ').convert(data));
-    print('💾 Saved ${appointments.length} appointments to $filePath');
   }
 }

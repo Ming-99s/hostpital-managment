@@ -11,6 +11,12 @@
       "gender": "Gender.male"
     },
     {
+      "id": "313d516d-266d-49be-a886-58bsadf4c00c6f",
+      "username": "ming2",
+      "password": "pass123",
+      "type": "UserType.admin"
+    },
+    {
       "id": "313d516d-266d-49be-a886-58b5f4c00ca",
       "username": "DrSmith",
       "password": "12345",
@@ -20,7 +26,6 @@
       "specialty": "Specialty.cardiology",
       "availableSlots": [
         "2025-11-06T09:00:00.000",
-        "2025-11-06T13:30:00.000",
         "2025-11-07T10:00:00.000"
       ]
     }

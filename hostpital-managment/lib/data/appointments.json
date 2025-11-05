@@ -1,17 +1,31 @@
 {
   "appointments": [
     {
-      "appointmentId": "ee946630-173e-486d-acb5-763bc3e995a2",
-      "patientId": "uuid-2",
-      "doctorId": "uuid-3",
-      "dateTime": "2025-11-07T14:00:00.000",
-      "appointmentStatus": "AppointmentStatus.pending"
+      "appointmentId": "6ad72316-b948-43de-938d-64939335e20d",
+      "patientId": "313d516d-266d-49be-a886-58b5f4c00c6f",
+      "doctorId": "313d516d-266d-49be-a886-58b5f4c00ca",
+      "dateTime": "2025-11-06T13:30:00.000",
+      "appointmentStatus": "AppointmentStatus.approved"
     },
     {
-      "appointmentId": "bdde37e0-38f8-40f4-9c3c-2f6dad0a19fe",
+      "appointmentId": "cf79389a-4262-42b8-820b-7d7fdd0c735c",
       "patientId": "313d516d-266d-49be-a886-58b5f4c00c6f",
       "doctorId": "313d516d-266d-49be-a886-58b5f4c00ca",
       "dateTime": "2025-11-07T10:00:00.000",
+      "appointmentStatus": "AppointmentStatus.reject"
+    },
+    {
+      "appointmentId": "d5a146db-1939-4a9d-816c-8030f124fe94",
+      "patientId": "313d516d-266d-49be-a886-58b5f4c00c6f",
+      "doctorId": "313d516d-266d-49be-a886-58b5f4c00ca",
+      "dateTime": "2025-11-07T10:00:00.000",
+      "appointmentStatus": "AppointmentStatus.pending"
+    },
+    {
+      "appointmentId": "3872d29a-66bf-4fa4-a6ab-a30944b65ffb",
+      "patientId": "313d516d-266d-49be-a886-58b5f4c00c6f",
+      "doctorId": "313d516d-266d-49be-a886-58b5f4c00ca",
+      "dateTime": "2025-11-06T09:00:00.000",
       "appointmentStatus": "AppointmentStatus.pending"
     }
   ]

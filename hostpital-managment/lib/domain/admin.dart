@@ -12,4 +12,6 @@ class Admin extends User {
           password: password,
           type: UserType.admin,
         );
+
+  
 }
