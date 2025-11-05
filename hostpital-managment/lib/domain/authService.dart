@@ -4,12 +4,22 @@ import 'doctor.dart';
 import 'admin.dart';
 import 'doctor.dart';
 import 'appointmentManager.dart';
+import '../data/User_file.dart';
 class AuthService {
   late List<User> _users;
   late AppointmentManager appointmentManager;
+  late UserRepository userRepo;
+  late DoctorRepository doctorRepo;
 
-  AuthService({required List<User> users, required this.appointmentManager}) {
+  AuthService({
+    required List<User> users,
+    required this.appointmentManager,
+    required UserRepository userRepo,
+    required DoctorRepository doctorRepo,
+  }) {
     _users = users;
+    this.userRepo = userRepo;
+    this.doctorRepo = doctorRepo;
   }
 
   // -------------------- Unified Register --------------------
@@ -59,6 +69,14 @@ class AuthService {
     }
 
     _users.add(newUser);
+
+    // Persist immediately to the appropriate files (patients/admin to users.json, doctors to doctors.json)
+    try {
+      userRepo.writeUsers(_users);
+      doctorRepo.writeDoctors(_users.whereType<Doctor>().toList());
+    } catch (_) {
+      // Silently ignore write errors here; main will persist on exit
+    }
     return newUser;
   }
 

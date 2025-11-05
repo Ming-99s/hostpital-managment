@@ -5,10 +5,10 @@ import '../domain/doctor.dart';
 import '../domain/authService.dart';
 import 'adminDashboard.dart';
 import 'patientDashboard.dart';
+import 'doctorDashboard.dart';
 
 class Auth {
   final AuthService authService;
-
   Auth({required this.authService});
 
   void start() {
@@ -94,13 +94,16 @@ class Auth {
           if (user.login(username, password)) {
             if (user.type == UserType.patient) {
               print('✅ Logged in as Patient! Welcome, ${user.username}');
-              PatientDashboard(authService.appointmentManager).startPatientDashboard(user);
-
+              PatientDashboard(authService.appointmentManager)
+                  .startPatientDashboard(user);
             } else if (user.type == UserType.doctor) {
               print('✅ Logged in as Doctor! Welcome, ${user.username}');
+              DoctorDashboard(authService.appointmentManager)
+                  .startDoctorDashboard(user);
             } else if (user.type == UserType.admin) {
               print('✅ Logged in as Admin! Welcome, ${user.username}');
-              AdminDashboard(authService.appointmentManager).startAdminDashboard(user);
+              AdminDashboard(authService.appointmentManager)
+                  .startAdminDashboard(user);
             }
           } else {
             print('❌ Invalid password!');

@@ -15,19 +15,6 @@
       "username": "ming2",
       "password": "pass123",
       "type": "UserType.admin"
-    },
-    {
-      "id": "313d516d-266d-49be-a886-58b5f4c00ca",
-      "username": "DrSmith",
-      "password": "12345",
-      "type": "UserType.doctor",
-      "address": "456 Clinic Street",
-      "email": "drsmith@clinic.com",
-      "specialty": "Specialty.cardiology",
-      "availableSlots": [
-        "2025-11-06T09:00:00.000",
-        "2025-11-07T10:00:00.000"
-      ]
     }
   ]
 }

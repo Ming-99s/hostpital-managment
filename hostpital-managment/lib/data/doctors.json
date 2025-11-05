@@ -1,0 +1,29 @@
+{
+  "doctors": [
+    {
+      "id": "313d516d-266d-49be-a886-58b5f4c00ca",
+      "username": "DrSmith",
+      "password": "12345",
+      "address": "456 Clinic Street",
+      "email": "drsmith@clinic.com",
+      "specialty": "Specialty.cardiology",
+      "availableSlots": [
+        "2025-11-06T09:00:00.000"
+      ],
+      "type": "UserType.doctor"
+    },
+    {
+      "id": "e5b7d6a9-0d57-427d-a5ce-0c7bafaea4b7",
+      "username": "doctor",
+      "password": "doctor123",
+      "address": "address123",
+      "email": "doctor@gmail.com",
+      "specialty": "Specialty.cardiology",
+      "availableSlots": [
+        "2025-11-06T01:05:00.000",
+        "2025-11-06T12:12:00.000"
+      ],
+      "type": "UserType.doctor"
+    }
+  ]
+}
