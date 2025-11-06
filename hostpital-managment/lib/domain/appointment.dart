@@ -1,5 +1,3 @@
-import 'doctor.dart';
-import 'patient.dart';
 import 'package:uuid/uuid.dart';
 
 enum AppointmentStatus { pending, reject, approved, canceled }

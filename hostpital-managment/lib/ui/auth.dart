@@ -5,6 +5,7 @@ import '../domain/doctor.dart';
 import '../domain/authService.dart';
 import 'adminDashboard.dart';
 import 'patientDashboard.dart';
+import 'doctorDashboard.dart';
 
 class Auth {
   final AuthService authService;
@@ -98,6 +99,7 @@ class Auth {
 
             } else if (user.type == UserType.doctor) {
               print('✅ Logged in as Doctor! Welcome, ${user.username}');
+              DoctorDashboard(authService.appointmentManager).startDoctorDashboard(user);
             } else if (user.type == UserType.admin) {
               print('✅ Logged in as Admin! Welcome, ${user.username}');
               AdminDashboard(authService.appointmentManager).startAdminDashboard(user);
