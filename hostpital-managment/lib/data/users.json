@@ -25,9 +25,18 @@
       "email": "drsmith@clinic.com",
       "specialty": "Specialty.cardiology",
       "availableSlots": [
-        "2025-11-06T09:00:00.000",
         "2025-11-07T10:00:00.000"
       ]
+    },
+    {
+      "id": "b22e50d8-c1b6-4df3-915f-c7a497838adb",
+      "username": "lyming",
+      "password": "123",
+      "type": "UserType.patient",
+      "age": 12,
+      "address": "cnasd",
+      "email": "cnsaj",
+      "gender": "Gender.male"
     }
   ]
 }

@@ -22,8 +22,15 @@
       "appointmentStatus": "AppointmentStatus.pending"
     },
     {
-      "appointmentId": "3872d29a-66bf-4fa4-a6ab-a30944b65ffb",
+      "appointmentId": "c8e1ee64-ae0e-484d-8bae-619d5a09c6e2",
       "patientId": "313d516d-266d-49be-a886-58b5f4c00c6f",
+      "doctorId": "313d516d-266d-49be-a886-58b5f4c00ca",
+      "dateTime": "2025-11-06T09:00:00.000",
+      "appointmentStatus": "AppointmentStatus.pending"
+    },
+    {
+      "appointmentId": "cddfa3e3-e985-41e1-b3d8-eb204f09d0b1",
+      "patientId": "b22e50d8-c1b6-4df3-915f-c7a497838adb",
       "doctorId": "313d516d-266d-49be-a886-58b5f4c00ca",
       "dateTime": "2025-11-06T09:00:00.000",
       "appointmentStatus": "AppointmentStatus.pending"
