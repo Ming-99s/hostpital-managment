@@ -8,9 +8,9 @@ import 'domain/appointment.dart';
 
 void main() {
   // Load users and appointments from JSON
-  UserRepository userRepo = UserRepository('hostpital-managment/lib/data/users.json');
+  UserRepository userRepo = UserRepository('data/users.json');
   AppointmentRepository appRepo =
-      AppointmentRepository('hostpital-managment/lib/data/appointments.json');
+      AppointmentRepository('data/appointments.json');
 
   List<User> users = userRepo.readUsers();
   List<Appointment> appointments = appRepo.readAppointments();

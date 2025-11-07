@@ -3,9 +3,11 @@ import '../domain/appointmentManager.dart';
 import '../domain/user.dart';
 import '../domain/appointment.dart';
 import '../domain/doctor.dart';
+import 'package:uuid/uuid.dart';
 
 class PatientDashboard {
   final AppointmentManager appointmentManager;
+  final Uuid _uuid = Uuid();
 
   PatientDashboard(this.appointmentManager);
 
@@ -166,7 +168,7 @@ class PatientDashboard {
       return;
     }
 
-    final newAppointment = appointmentManager.bookAppointment(
+    final newAppointment = _bookAppointment(
       patient.id,
       doctor.id,
       selectedSlot,
@@ -190,6 +192,69 @@ class PatientDashboard {
     }
     
     _pressEnterToContinue();
+  }
+
+  // Book appointment method (moved from AppointmentManager)
+  Appointment? _bookAppointment(String patientId, String doctorId, DateTime dateTime) {
+    try {
+      // Check if the slot is still available
+      final doctor = appointmentManager.allUsers
+          .where((user) => user.id == doctorId && user is Doctor)
+          .cast<Doctor>()
+          .first;
+
+      if (!doctor.availableSlots.any((slot) =>
+          slot.year == dateTime.year &&
+          slot.month == dateTime.month &&
+          slot.day == dateTime.day &&
+          slot.hour == dateTime.hour &&
+          slot.minute == dateTime.minute)) {
+        print('❌ This time slot is no longer available.');
+        return null;
+      }
+
+      // Check if patient already has an appointment at this time
+      final conflictingAppointment = appointmentManager.allAppointments
+          .where((appt) =>
+              appt.patientId == patientId &&
+              appt.dateTime.year == dateTime.year &&
+              appt.dateTime.month == dateTime.month &&
+              appt.dateTime.day == dateTime.day &&
+              appt.dateTime.hour == dateTime.hour)
+          .firstOrNull();
+
+      if (conflictingAppointment != null) {
+        print('❌ You already have an appointment at this time.');
+        return null;
+      }
+
+      // Create new appointment
+      final newAppointment = Appointment(
+        appointmentId: _uuid.v4(),
+        patientId: patientId,
+        doctorId: doctorId,
+        dateTime: dateTime,
+        appointmentStatus: AppointmentStatus.pending,
+      );
+
+      // Add to appointments list
+      appointmentManager.allAppointments.add(newAppointment);
+
+      // Remove the slot from doctor's availability
+      final slotToRemove = doctor.availableSlots.firstWhere((slot) =>
+          slot.year == dateTime.year &&
+          slot.month == dateTime.month &&
+          slot.day == dateTime.day &&
+          slot.hour == dateTime.hour &&
+          slot.minute == dateTime.minute);
+
+      doctor.availableSlots.remove(slotToRemove);
+
+      return newAppointment;
+    } catch (e) {
+      print('❌ Error booking appointment: $e');
+      return null;
+    }
   }
 
   void _viewAppointments(User patient) {
@@ -318,11 +383,20 @@ class PatientDashboard {
       return;
     }
 
+    // Return the slot to doctor's availability when canceling
+    if (doctor != null) {
+      doctor.availableSlots.add(toCancel.dateTime);
+      // Sort the slots to keep them organized
+      doctor.availableSlots.sort((a, b) => a.compareTo(b));
+    }
+
     appointmentManager.allAppointments.remove(toCancel);
     print('✅ Appointment cancelled successfully!');
+    if (doctor != null) {
+      print('🗓️ Time slot returned to doctor\'s availability.');
+    }
     _pressEnterToContinue();
   }
-
 
   // Helper Methods
   Doctor? _getDoctorById(String doctorId) {
@@ -372,5 +446,16 @@ class PatientDashboard {
   void _pressEnterToContinue() {
     print('\nPress Enter to continue...');
     stdin.readLineSync();
+  }
+}
+
+// Extension for firstOrNull since it's not available in older Dart versions
+extension FirstWhereExtension<T> on Iterable<T> {
+  T? firstOrNull() {
+    try {
+      return first;
+    } catch (e) {
+      return null;
+    }
   }
 }
