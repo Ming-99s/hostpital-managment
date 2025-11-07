@@ -1,8 +1,6 @@
 import 'user.dart';
 import 'patient.dart';
 import 'doctor.dart';
-import 'admin.dart';
-import 'doctor.dart';
 import 'appointmentManager.dart';
 class AuthService {
   late List<User> _users;
