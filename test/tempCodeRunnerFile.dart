@@ -37,8 +37,8 @@ void main() {
     });
   });
 
-  group('AppointmentManager: booking', () {
-    test('Books an appointment (pending) and removes doctor slot', () {
+  group('AppointmentManager: booking and approving', () {
+    test('Books and approves an appointment, removing doctor slot', () {
       final userRepo = UserRepository('hostpital-managment/lib/data/users.json');
       final appRepo = AppointmentRepository('hostpital-managment/lib/data/appointments.json');
       final users = userRepo.readUsers();
@@ -60,9 +60,8 @@ void main() {
       expect(appt!.appointmentStatus, AppointmentStatus.pending);
       expect(mgr.allAppointments.any((a) => a.appointmentId == appt.appointmentId), true);
 
-      // Booking removes the slot and creates a pending appointment.
-      // Approval is performed by an admin action separately.
-      expect(doctor.availableSlots.contains(normalizedSlot), false, reason: 'Booked slot should be removed');
+      expect(appt.appointmentStatus, AppointmentStatus.approved);
+      expect(doctor.availableSlots.contains(normalizedSlot), false, reason: 'Approved slot should be removed');
     });
   });
 
