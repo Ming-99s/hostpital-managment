@@ -1,7 +1,7 @@
 import 'dart:io';
-import '../domain/appointmentManager.dart';
+import '../domain/Service/appointmentManager.dart';
 import '../domain/user.dart';
-import '../domain/doctor.dart';
+import '../domain/doctor.dart'; 
 import '../domain/appointment.dart';
 
 class DoctorDashboard {

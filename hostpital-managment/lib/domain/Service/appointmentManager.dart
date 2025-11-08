@@ -1,7 +1,7 @@
 import 'package:uuid/uuid.dart';
-import 'appointment.dart';
-import 'user.dart';
-import 'doctor.dart';
+import '../appointment.dart';
+import '../user.dart';
+import '../doctor.dart';
 
 class AppointmentManager {
   late List<User> _users;
@@ -10,7 +10,7 @@ class AppointmentManager {
   AppointmentManager({
     required List<User> users,
     required List<Appointment> appointments,
-  }) {
+  }) { 
     _users = users;
     _appointments = appointments;
   }

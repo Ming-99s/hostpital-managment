@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'dart:convert';
-import '../domain/user.dart';
-import '../domain/patient.dart';
-import '../domain/doctor.dart';
-import '../domain/admin.dart';
+import '../../domain/user.dart';
+import '../../domain/patient.dart';
+import '../../domain/doctor.dart';
+import '../../domain/admin.dart';
 
 class UserRepository {
   final String filePath;

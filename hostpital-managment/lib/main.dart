@@ -1,9 +1,9 @@
-import 'data/appointments_file.dart';
-import 'data/User_file.dart';
-import 'domain/authService.dart';
+import 'data/Repository/appointments_file.dart';
+import 'data/Repository/User_file.dart';
+import 'domain/Service/authService.dart';
 import 'domain/user.dart';
 import 'ui/auth.dart';
-import 'domain/appointmentManager.dart';
+import 'domain/Service/appointmentManager.dart';
 import 'domain/appointment.dart';
 
 void main() {

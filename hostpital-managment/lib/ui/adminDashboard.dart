@@ -3,7 +3,7 @@ import '../domain/user.dart';
 import '../domain/patient.dart';
 import '../domain/doctor.dart';
 import '../domain/appointment.dart';
-import '../domain/appointmentManager.dart';
+import '../domain/Service/appointmentManager.dart';
 
 class AdminDashboard {
   final AppointmentManager appointmentManager;
@@ -128,7 +128,6 @@ class AdminDashboard {
     
     _pressEnterToContinue();
   }
-
   void _addPatient() {
     print('\n😷 === ADD NEW PATIENT ===');
     
