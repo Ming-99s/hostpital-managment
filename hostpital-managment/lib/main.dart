@@ -18,10 +18,10 @@ void main() {
   AppointmentManager appointmentManager = AppointmentManager(appRepo, userManager);
 
   // Create AuthService
-  AuthService authService = AuthService(userManager: userManager, appointmentManager: appointmentManager);
+  AuthService authService = AuthService(userManager: userManager);
 
   // Start the Auth UI
-  AuthUI auth = AuthUI(authService: authService);
+  AuthUI auth = AuthUI(authService: authService, appointmentManager: appointmentManager);
   auth.startAuthUI();
 
 

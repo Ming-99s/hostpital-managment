@@ -15,7 +15,8 @@
       "email": "drsmith@clinic.com",
       "specialty": "Specialty.cardiology",
       "availableSlots": [
-        "2025-11-06T09:00:00.000"
+        "2025-11-06T09:00:00.000",
+        "2025-11-12T10:20:00.000"
       ]
     },
     {

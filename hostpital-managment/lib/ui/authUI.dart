@@ -1,6 +1,5 @@
 import 'dart:io';
 import '../domain/Service/appointmentManager.dart';
-import '../domain/Service/userManager.dart';
 import '../domain/patient.dart';
 import '../domain/doctor.dart';
 import '../domain/Service/authService.dart';
@@ -12,8 +11,9 @@ import 'doctorDashboard.dart';
 
 class AuthUI {
   final AuthService authService;
+  final AppointmentManager appointmentManager;
 
-  AuthUI({required this.authService});
+  AuthUI({required this.authService , required this.appointmentManager});
 
   void startAuthUI() {
     while (true) {
@@ -297,15 +297,15 @@ class AuthUI {
     
     switch (user.type) {
       case UserType.admin:
-        AdminDashboard adminDashboard = AdminDashboard(authService.appointmentManager, authService.userManager);
+        AdminDashboard adminDashboard = AdminDashboard(appointmentManager, authService.userManager);
         adminDashboard.startAdminDashboard(user);
         break;
       case UserType.doctor:
-        DoctorDashboard doctorDashboard = DoctorDashboard(authService.appointmentManager, authService.userManager);
+        DoctorDashboard doctorDashboard = DoctorDashboard(appointmentManager, authService.userManager);
         doctorDashboard.startDoctorDashboard(user);
         break;
       case UserType.patient:
-        PatientDashboard patientDashboard = PatientDashboard(authService.appointmentManager, authService.userManager);
+        PatientDashboard patientDashboard = PatientDashboard(appointmentManager, authService.userManager);
         patientDashboard.startPatientDashboard(user);
         break;
     }
