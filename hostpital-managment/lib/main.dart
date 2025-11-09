@@ -19,7 +19,7 @@ void main() {
   AuthService authService = AuthService(userManager: userManager, appointmentManager: appointmentManager);
 
   // Start the Auth UI
-  AuthUI auth = AuthUI(authService: authService,userManager: userManager,appointmentManager: appointmentManager);
+  AuthUI auth = AuthUI(authService: authService);
   auth.startAuthUI();
 
 

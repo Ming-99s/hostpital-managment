@@ -6,14 +6,13 @@ import '../domain/doctor.dart';
 import '../domain/Service/authService.dart';
 import '../domain/user.dart';
 import 'adminDashboard.dart';
+import 'doctorDashboard.dart';
 import 'patientDashboard.dart';
 
 class AuthUI {
   final AuthService authService;
-  final AppointmentManager appointmentManager;
-  final UserManager userManager;
 
-  AuthUI({required this.authService, required this.userManager,required this.appointmentManager});
+  AuthUI({required this.authService});
 
   void startAuthUI() {
     while (true) {
@@ -297,13 +296,15 @@ class AuthUI {
     
     switch (user.type) {
       case UserType.admin:
-        AdminDashboard adminDashboard = AdminDashboard(appointmentManager, userManager);
+        AdminDashboard adminDashboard = AdminDashboard(authService.appointmentManager, authService.userManager);
         adminDashboard.startAdminDashboard(user);
         break;
       case UserType.doctor:
+        DoctorDashboard doctorDashboard = DoctorDashboard(authService.appointmentManager, authService.userManager);
+        doctorDashboard.startDoctorDashboard(user);
         break;
       case UserType.patient:
-        PatientDashboard patientDashboard = PatientDashboard(appointmentManager, userManager);
+        PatientDashboard patientDashboard = PatientDashboard(authService.appointmentManager, authService.userManager);
         patientDashboard.startPatientDashboard(user);
         break;
     }
