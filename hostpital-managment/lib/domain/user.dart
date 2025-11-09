@@ -16,8 +16,6 @@ class User {
       required this.password,
       required this.type}) : registerDate = DateTime.now() , id = id ?? Uuid().v4();
 
-  bool login(String username, String password) {
-    return this.username == username && this.password == password;
-  }
+
 
 }

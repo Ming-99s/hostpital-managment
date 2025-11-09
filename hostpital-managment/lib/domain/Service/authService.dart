@@ -2,84 +2,96 @@ import '../user.dart';
 import '../patient.dart';
 import '../doctor.dart';
 import '../Service/appointmentManager.dart';
-class AuthService {
-  late List<User> _users;
-  late AppointmentManager appointmentManager;
+import 'userManager.dart';
 
-  AuthService({required List<User> users, required this.appointmentManager}) {
-    _users = users;
+class AuthService {
+  final AppointmentManager appointmentManager;
+  final UserManager userManager;
+
+  AuthService({required this.userManager, required this.appointmentManager});
+
+  User? registerPatient(String username, String password, String email, int age ,String address,Gender gender) {
+    try {
+      if (userManager.isUsernameExists(username)) {
+        throw Exception('Username already exists');
+      }
+
+      if (userManager.isValidEmail(email)) {
+        throw Exception('Invalid email format');
+      }
+
+      if (age < 0 || age > 150) {
+        throw Exception('Invalid age');
+      }
+
+      final newPatient = Patient(
+        username: username,
+        address: address,
+        password: password, 
+        email: email,
+        age: age,
+        gender: gender
+      );
+
+      userManager.addUser(newPatient);
+
+      return newPatient;
+    } catch (e) {
+      throw Exception('Registration failed: $e');
+    }
   }
 
-  // -------------------- Unified Register --------------------
-  User register({
-    required UserType type,
-    required String username,
-    required String password,
-    String? email,
-    String? address,
-    int? age,
-    Gender? gender,
-    Specialty? specialty,
-  }) {
-    // Check if username already exists
-    if (_users.any((u) => u.username == username)) {
-      throw Exception('Username already exists!');
-    }
-
-    late User newUser;
-
-    if (type == UserType.patient) {
-      if (age == null || gender == null || email == null || address == null) {
-        throw Exception('Missing required fields for patient.');
+  User? registerDoctor(String username, String password, String email, Specialty specialty, List<DateTime> availableSlots,String address) {
+    try {
+      if (userManager.isUsernameExists(username)) {
+        throw Exception('Username already exists');
       }
-      newUser = Patient(
-        username: username,
-        password: password,
-        age: age,
-        address: address,
-        email: email,
-        gender: gender,
-      );
-    } else if (type == UserType.doctor) {
-      if (email == null || address == null || specialty == null) {
-        throw Exception('Missing required fields for doctor.');
+
+      if (userManager.isValidEmail(email)) {
+        throw Exception('Invalid email format');
       }
-      newUser = Doctor(
+
+      final newDoctor = Doctor(
         username: username,
-        password: password,
+        password: password, 
         email: email,
         address: address,
         specialty: specialty,
-        availableSlots: [],
+        availableSlots: availableSlots,
       );
-    } else {
-      throw Exception('Cannot register admin manually.');
-    }
 
-    _users.add(newUser);
-    return newUser;
+      userManager.addUser(newDoctor);
+
+      return newDoctor;
+    } catch (e) {
+      throw Exception('Doctor registration failed: $e');
+    }
   }
 
-  // -------------------- Login --------------------
-  User login({required String username, required String password}) {
-    final user = _users.firstWhere((u) => u.username == username); // no orElse
+  User? login(String username, String password) {
+    try {
+      final allUsers = userManager.getallUser();
+      
+      final user = allUsers.firstWhere(
+        (user) => user.username == username && user.password == password,
+      );
 
-    if (!user.login(username, password)) {
-      throw Exception('Invalid password!');
+      return user;
+    } catch (e) {
+      return null;
     }
-
-    return user;
   }
 
-  // -------------------- Helpers --------------------
-  List<User> get allUsers => _users;
+  bool validateCredentials(String username, String password) {
+    return login(username, password) != null;
+  }
 
-  List<User> getPatients() =>
-      _users.where((u) => u.type == UserType.patient).toList();
 
-  List<User> getDoctors() =>
-      _users.where((u) => u.type == UserType.doctor).toList();
 
-  User getAdmin() =>
-      _users.firstWhere((u) => u.type == UserType.admin); // no orElse
+  /// Checks if username is available
+  bool isUsernameAvailable(String username) {
+    return !userManager.isUsernameExists(username);
+  }
+
+
 }

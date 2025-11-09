@@ -590,7 +590,7 @@ $statusIcon ID: ${appointment.appointmentId}
 
       stdout.write('Enter email: ');
       String email = stdin.readLineSync()?.trim() ?? '';
-      if (email.isEmpty || !email.contains('@')) {
+      if (email.isEmpty || userManager.isValidEmail(email)) {
         print('❌ Please enter a valid email.');
         return;
       }
@@ -687,7 +687,7 @@ $statusIcon ID: ${appointment.appointmentId}
 
       stdout.write('Enter email: ');
       String email = stdin.readLineSync()?.trim() ?? '';
-      if (email.isEmpty || !email.contains('@')) {
+      if (email.isEmpty || userManager.isValidEmail(email)) {
         print('❌ Please enter a valid email.');
         return;
       }
@@ -875,7 +875,7 @@ void main() {
   Admin admin = Admin(username: 'ming', password: 'ming123');
 
 
-  UserManager userManager = UserManager(userRepository: reUser, admin: admin);
+  UserManager userManager = UserManager(userRepository: reUser);
   AppointmentManager appointmentManager = AppointmentManager(reApp,userManager);
   AdminDashboard ad = AdminDashboard(appointmentManager, userManager);
 

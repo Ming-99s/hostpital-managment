@@ -6,9 +6,8 @@ import '../patient.dart';
 
 class UserManager {
   final UserRepository userRepository;
-  final Admin admin;
 
-  UserManager({required this.userRepository,required this.admin});
+  UserManager({required this.userRepository});
 
   List<User> getallUser(){
     return userRepository.readUsers();
@@ -44,7 +43,16 @@ class UserManager {
     userRepository.writeUsers(users);
   }
 
-    Patient? getPatientById(String patientId) {
+  User? getUserById(String userId) {
+    final allUsers = getallUser();
+    try {
+      return allUsers.firstWhere((user) => user.id == userId);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Patient? getPatientById(String patientId) {
     final users = getallUser();
     try {
       return users.firstWhere(
@@ -88,6 +96,11 @@ class UserManager {
       };
     }
     return {'name': 'Unknown Doctor', 'specialty': 'Unknown', 'email': 'N/A'};
+  }
+
+  bool isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
   }
 
   String formatSpecialty(Specialty specialty) {
