@@ -1,0 +1,11 @@
+{
+  "appointments": [
+    {
+      "appointmentId": "a1",
+      "patientId": "32c5d06a-ed78-4788-b14c-eb77face9409",
+      "doctorId": "45be3931-716d-4884-a796-9e61b8066a9c",
+      "dateTime": "2025-11-10T09:00:00.000",
+      "appointmentStatus": "AppointmentStatus.pending"
+    }
+  ]
+}
