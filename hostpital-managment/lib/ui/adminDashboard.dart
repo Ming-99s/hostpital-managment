@@ -647,7 +647,6 @@ $statusIcon ID: ${appointment.appointmentId}
       print('Username: $username');
       print('Age: $age');
       print('Email: $email');
-      print('Registered: ${newPatient.registerDate}');
     } catch (e) {
       print('❌ Error adding patient: $e');
     }
@@ -765,7 +764,6 @@ $statusIcon ID: ${appointment.appointmentId}
       print('Username: $username');
       print('Specialty: ${userManager.formatSpecialty(specialty)}');
       print('Email: $email');
-      print('Registered: ${newDoctor.registerDate}');
     } catch (e) {
       print('❌ Error adding doctor: $e');
     }
