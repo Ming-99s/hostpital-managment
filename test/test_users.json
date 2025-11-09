@@ -8,7 +8,9 @@
       "address": "123 Street",
       "email": "filter@test.com",
       "specialty": "Specialty.cardiology",
-      "availableSlots": []
+      "availableSlots": [
+        "2025-11-09T22:49:19.683824"
+      ]
     },
     {
       "id": "586bae66-bc18-4528-8263-33e15efe8a6b",
@@ -19,6 +21,26 @@
       "address": "Road 1",
       "email": "pat@test.com",
       "gender": "Gender.male"
+    },
+    {
+      "id": "a91f8323-7e9a-44b3-8955-a0999310e48c",
+      "username": "haha",
+      "password": "1234",
+      "type": "UserType.patient",
+      "age": 22,
+      "address": "Phnom Penh",
+      "email": "alice@example.com",
+      "gender": "Gender.female"
+    },
+    {
+      "id": "dfc24827-7ca0-4d01-aecd-c7d4da176cc3",
+      "username": "Dr. Bob",
+      "password": "abcd",
+      "type": "UserType.doctor",
+      "address": "Siem Reap",
+      "email": "bob@example.com",
+      "specialty": "Specialty.cardiology",
+      "availableSlots": []
     }
   ]
 }
