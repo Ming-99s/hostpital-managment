@@ -41,6 +41,28 @@
       "email": "bob@example.com",
       "specialty": "Specialty.cardiology",
       "availableSlots": []
+    },
+    {
+      "id": "ccf37209-76ec-4574-8dfc-50981e815bec",
+      "username": "drsmith",
+      "password": "docpass456",
+      "type": "UserType.doctor",
+      "address": "456 Hospital Blvd",
+      "email": "doctor@example.com",
+      "specialty": "Specialty.cardiology",
+      "availableSlots": [
+        "2025-11-10T02:36:03.737485"
+      ]
+    },
+    {
+      "id": "e8892def-8c90-46ac-8663-6cfaf56b57ef",
+      "username": "docB",
+      "password": "pass",
+      "type": "UserType.doctor",
+      "address": "Addr",
+      "email": "b@mail.com",
+      "specialty": "Specialty.pediatrics",
+      "availableSlots": []
     }
   ]
 }

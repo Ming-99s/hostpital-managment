@@ -14,7 +14,7 @@ class AuthService {
         throw Exception('Username already exists');
       }
 
-      if (userManager.isValidEmail(email)) {
+      if (!userManager.isValidEmail(email)) {
         throw Exception('Invalid email format');
       }
 
@@ -45,7 +45,7 @@ class AuthService {
         throw Exception('Username already exists');
       }
 
-      if (userManager.isValidEmail(email)) {
+      if (!userManager.isValidEmail(email)) {
         throw Exception('Invalid email format');
       }
 

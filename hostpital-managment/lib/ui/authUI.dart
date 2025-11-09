@@ -7,7 +7,6 @@ import '../domain/user.dart';
 import 'adminDashboard.dart';
 import 'doctorDashboard.dart';
 import 'patientDashboard.dart';
-import 'doctorDashboard.dart';
 
 class AuthUI {
   final AuthService authService;
