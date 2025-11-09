@@ -6,7 +6,6 @@ class User {
   final String id;
   final String username;
   final String password;
-  final DateTime registerDate;
   final UserType type;
 
   User(
@@ -14,7 +13,7 @@ class User {
       String? id,
       required this.username,
       required this.password,
-      required this.type}) : registerDate = DateTime.now() , id = id ?? Uuid().v4();
+      required this.type}) :  id = id ?? Uuid().v4();
 
 
 
