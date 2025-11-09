@@ -37,6 +37,16 @@
       "address": "dcjndac",
       "email": "reach@gmail.com",
       "gender": "Gender.male"
+    },
+    {
+      "id": "26ffa3ec-4a7e-4d5e-a28e-dbe30a3e34ad",
+      "username": "Ming",
+      "password": "123",
+      "type": "UserType.patient",
+      "age": 23,
+      "address": "phnomPenh",
+      "email": "ming@gmail.ocm",
+      "gender": "Gender.male"
     }
   ]
 }

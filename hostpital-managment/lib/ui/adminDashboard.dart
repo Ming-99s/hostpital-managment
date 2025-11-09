@@ -590,7 +590,7 @@ $statusIcon ID: ${appointment.appointmentId}
 
       stdout.write('Enter email: ');
       String email = stdin.readLineSync()?.trim() ?? '';
-      if (email.isEmpty || !email.contains('@')) {
+      if (email.isEmpty || userManager.isValidEmail(email)) {
         print('❌ Please enter a valid email.');
         return;
       }
@@ -687,7 +687,7 @@ $statusIcon ID: ${appointment.appointmentId}
 
       stdout.write('Enter email: ');
       String email = stdin.readLineSync()?.trim() ?? '';
-      if (email.isEmpty || !email.contains('@')) {
+      if (email.isEmpty || userManager.isValidEmail(email)) {
         print('❌ Please enter a valid email.');
         return;
       }

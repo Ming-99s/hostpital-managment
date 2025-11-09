@@ -1,35 +1,26 @@
 import 'data/Repository/appointments_file.dart';
 import 'data/Repository/User_file.dart';
 import 'domain/Service/authService.dart';
-import 'domain/user.dart';
-import 'ui/auth.dart';
+import 'domain/Service/userManager.dart';
+import 'ui/authUI.dart';
 import 'domain/Service/appointmentManager.dart';
-import 'domain/appointment.dart';
 
 void main() {
   // Load users and appointments from JSON
   UserRepository userRepo = UserRepository('data/users.json');
-  AppointmentRepository appRepo =
-      AppointmentRepository('data/appointments.json');
+  AppointmentRepository appRepo = AppointmentRepository('data/appointments.json');
 
-  List<User> users = userRepo.readUsers();
-  List<Appointment> appointments = appRepo.readAppointments();
+  UserManager userManager = UserManager(userRepository: userRepo);
 
   // Create AppointmentManager
-  AppointmentManager appointmentManager = AppointmentManager(
-    users: users,
-    appointments: appointments,
-  );
+  AppointmentManager appointmentManager = AppointmentManager(appRepo, userManager);
 
   // Create AuthService
-  AuthService authService =
-      AuthService(users: users, appointmentManager: appointmentManager);
+  AuthService authService = AuthService(userManager: userManager, appointmentManager: appointmentManager);
 
   // Start the Auth UI
-  Auth authUI = Auth(authService: authService);
-  authUI.start();
+  AuthUI auth = AuthUI(authService: authService,userManager: userManager,appointmentManager: appointmentManager);
+  auth.startAuthUI();
 
-  // Optional: Save back to JSON after program ends
-  userRepo.writeUsers(users);
-  appRepo.writeAppointments(appointments);
+
 }

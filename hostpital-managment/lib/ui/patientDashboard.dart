@@ -3,10 +3,11 @@ import '../data/Repository/User_file.dart';
 import '../data/Repository/appointments_file.dart';
 import '../domain/Service/appointmentManager.dart';
 import '../domain/Service/userManager.dart';
+import '../domain/patient.dart';
 import '../domain/user.dart';
 import '../domain/appointment.dart';
 import '../domain/doctor.dart';
-import 'package:uuid/uuid.dart';
+
 
 class PatientDashboard {
   final AppointmentManager appointmentManager;
@@ -37,7 +38,7 @@ class PatientDashboard {
           _handleBookAppointment(patient);
           break;
         case '2':
-          // _viewAppointments(patient);
+          _viewAppointments(patient);
           break;
         case '3':
           print('\n👋 Thank you for using our service. Goodbye!');
@@ -130,7 +131,6 @@ void _handleBookAppointment(User patient) {
     try {
       // Create new appointment
       final newAppointment = Appointment(
-        appointmentId: Uuid().v4(),
         patientId: patient.id,
         doctorId: selectedDoctor.id,
         dateTime: selectedDateTime,
@@ -153,7 +153,14 @@ void _handleBookAppointment(User patient) {
 }
 
 String _formatDateTime(DateTime dateTime) {
-  return '${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
+  final hour = dateTime.hour;
+  final minute = dateTime.minute.toString().padLeft(2, '0');
+  
+  // Convert to 12-hour format
+  final period = hour >= 12 ? 'PM' : 'AM';
+  final twelveHour = hour % 12 == 0 ? 12 : hour % 12;
+  
+  return '${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} ${twelveHour.toString().padLeft(2, '0')}:$minute $period';
 }
 
 void _viewAppointments(User patient) {
@@ -244,12 +251,8 @@ String _getStatusEmoji(AppointmentStatus status) {
       return '❌';
     case AppointmentStatus.rejected:
       return '🚫';
-
   }
 }
-
-
-
 
 
 }
@@ -258,6 +261,19 @@ void main() {
   UserRepository reUser = UserRepository('../data/users.json');
   AppointmentRepository reApp = AppointmentRepository('../data/appointments.json');
 
-  UserManager(userRepository: userRepository, admin: admin)
+  UserManager userManager =  UserManager(userRepository: reUser);
+  AppointmentManager appointmentManager = AppointmentManager(reApp, userManager);
+
+
+  Patient? patient = userManager.getPatientById('26ffa3ec-4a7e-4d5e-a28e-dbe30a3e34ad');
+
+  if (patient == null) {
+    print('Not found this patient');
+    return;
+  }
+  PatientDashboard p1 = PatientDashboard(appointmentManager, userManager);
+
+  p1.startPatientDashboard(patient);
+
   
 }
