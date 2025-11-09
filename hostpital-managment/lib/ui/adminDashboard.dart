@@ -875,7 +875,7 @@ void main() {
   Admin admin = Admin(username: 'ming', password: 'ming123');
 
 
-  UserManager userManager = UserManager(userRepository: reUser, admin: admin);
+  UserManager userManager = UserManager(userRepository: reUser);
   AppointmentManager appointmentManager = AppointmentManager(reApp,userManager);
   AdminDashboard ad = AdminDashboard(appointmentManager, userManager);
 

@@ -6,9 +6,8 @@ import '../patient.dart';
 
 class UserManager {
   final UserRepository userRepository;
-  final Admin admin;
 
-  UserManager({required this.userRepository,required this.admin});
+  UserManager({required this.userRepository});
 
   List<User> getallUser(){
     return userRepository.readUsers();
