@@ -118,7 +118,7 @@ class AppointmentManager {
     if (appointment.appointmentStatus == AppointmentStatus.pending) {
       appointment.appointmentStatus = AppointmentStatus.rejected;
       updateAppointment(appointment, appointments);
-      print('✅ Appointment rejected.');
+      print('Appointment rejected.');
       return;
     } else {
       print('Only pending appointments can be rejected.');
