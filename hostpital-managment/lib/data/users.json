@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": "313d516d-266d-49be-a886-58bsadf4c00c6f",
+      "username": "ming2",
+      "password": "pass123",
+      "type": "UserType.admin"
+    },
+    {
+      "id": "313d516d-266d-49be-a886-58b5f4c00ca",
+      "username": "DrSmith",
+      "password": "12345",
+      "type": "UserType.doctor",
+      "address": "456 Clinic Street",
+      "email": "drsmith@clinic.com",
+      "specialty": "Specialty.cardiology",
+      "availableSlots": [
+        "2025-11-06T09:00:00.000"
+      ]
+    },
+    {
+      "id": "b22e50d8-c1b6-4df3-915f-c7a497838adb",
+      "username": "lyming",
+      "password": "123",
+      "type": "UserType.patient",
+      "age": 12,
+      "address": "cnasd",
+      "email": "cnsaj",
+      "gender": "Gender.male"
+    },
+    {
+      "id": "0a94d62a-38c7-4275-8280-14a883210da0",
+      "username": "ReachJOJO",
+      "password": "123",
+      "type": "UserType.patient",
+      "age": 12,
+      "address": "dcjndac",
+      "email": "reach@gmail.com",
+      "gender": "Gender.male"
+    },
+    {
+      "id": "26ffa3ec-4a7e-4d5e-a28e-dbe30a3e34ad",
+      "username": "Ming",
+      "password": "123",
+      "type": "UserType.patient",
+      "age": 23,
+      "address": "phnomPenh",
+      "email": "ming@gmail.ocm",
+      "gender": "Gender.male"
+    }
+  ]
+}
