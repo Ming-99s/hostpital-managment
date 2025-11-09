@@ -1,25 +1,25 @@
 {
   "users": [
     {
-      "id": "45be3931-716d-4884-a796-9e61b8066a9c",
-      "username": "dr_ming",
-      "password": "1234",
+      "id": "476ece1d-d670-479b-8847-f3f4032e4c0d",
+      "username": "dr_filter",
+      "password": "secret",
       "type": "UserType.doctor",
-      "address": "Clinic St",
-      "email": "reach@gmail.com",
+      "address": "123 Street",
+      "email": "filter@test.com",
       "specialty": "Specialty.cardiology",
       "availableSlots": [
         "2025-11-09T22:49:19.683824"
       ]
     },
     {
-      "id": "32c5d06a-ed78-4788-b14c-eb77face9409",
-      "username": "reach",
-      "password": "abcd",
+      "id": "586bae66-bc18-4528-8263-33e15efe8a6b",
+      "username": "pat1",
+      "password": "p@ss",
       "type": "UserType.patient",
-      "age": 25,
-      "address": "123 Main St",
-      "email": "reach@gmail.com",
+      "age": 30,
+      "address": "Road 1",
+      "email": "pat@test.com",
       "gender": "Gender.male"
     },
     {

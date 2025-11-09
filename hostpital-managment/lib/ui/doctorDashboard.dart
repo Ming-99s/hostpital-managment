@@ -34,10 +34,9 @@ class DoctorDashboard {
       print('====================================');
       print('1. 🗓️ My Schedule');
       print('2. 📋 My Appointments');
-      print('3. 📅 Today\'s Appointments');
-      print('4. 🧾 Appointment History');
-      print('5. ⚙️ Manage Availability');
-      print('6. 🚪 Logout');
+      print('3. ⚙️ Manage Availability');
+      print('4. 🛠️ Manage Appointments');
+      print('5. 🚪 Logout');
       print('------------------------------------');
       stdout.write('Enter your choice: ');
       final String? choice = stdin.readLineSync();
@@ -50,15 +49,12 @@ class DoctorDashboard {
           _viewMyAppointments(doctor);
           break;
         case '3':
-          _viewTodaysAppointments(doctor);
-          break;
-        case '4':
-          _viewAppointmentHistory(doctor);
-          break;
-        case '5':
           _manageAvailability(doctor);
           break;
-        case '6':
+        case '4':
+          _manageAppointments(doctor);
+          break;
+        case '5':
           print('\n👋 Logging out. Goodbye!');
           return;
         default:
@@ -100,9 +96,11 @@ class DoctorDashboard {
     for (var i = 0; i < myAppointments.length; i++) {
       final appt = myAppointments[i];
       final patientName = doctorService.getPatientName(appt.patientId);
-      print('\n${i + 1}. ${_getStatusEmoji(appt.appointmentStatus)} Appointment #${appt.appointmentId}');
+      print(
+          '\n${i + 1}. ${_getStatusEmoji(appt.appointmentStatus)} Appointment #${appt.appointmentId}');
       print('   Patient: $patientName');
-      print('   Date: ${doctorService.formatDate(appt.dateTime)} at ${doctorService.formatTime(appt.dateTime)}');
+      print(
+          '   Date: ${doctorService.formatDate(appt.dateTime)} at ${doctorService.formatTime(appt.dateTime)}');
       print('   Status: ${appt.appointmentStatus.name.toUpperCase()}');
     }
     _pressEnterToContinue();
@@ -122,7 +120,8 @@ class DoctorDashboard {
     for (var i = 0; i < todayAppts.length; i++) {
       final appt = todayAppts[i];
       final patientName = doctorService.getPatientName(appt.patientId);
-      print('\n${i + 1}. ${_getStatusEmoji(appt.appointmentStatus)} ${doctorService.formatTime(appt.dateTime)}');
+      print(
+          '\n${i + 1}. ${_getStatusEmoji(appt.appointmentStatus)} ${doctorService.formatTime(appt.dateTime)}');
       print('   Patient: $patientName');
       print('   Status: ${appt.appointmentStatus.name.toUpperCase()}');
     }
@@ -143,11 +142,81 @@ class DoctorDashboard {
     for (var i = 0; i < history.length; i++) {
       final appt = history[i];
       final patientName = doctorService.getPatientName(appt.patientId);
-      print('\n${i + 1}. ${_getStatusEmoji(appt.appointmentStatus)} Appointment #${appt.appointmentId}');
+      print(
+          '\n${i + 1}. ${_getStatusEmoji(appt.appointmentStatus)} Appointment #${appt.appointmentId}');
       print('   Patient: $patientName');
-      print('   Date: ${doctorService.formatDate(appt.dateTime)} at ${doctorService.formatTime(appt.dateTime)}');
+      print(
+          '   Date: ${doctorService.formatDate(appt.dateTime)} at ${doctorService.formatTime(appt.dateTime)}');
       print('   Status: ${appt.appointmentStatus.name.toUpperCase()}');
     }
+    _pressEnterToContinue();
+  }
+
+  void _manageAppointments(Doctor doctor) {
+    final myAppointments = doctorService.getAppointmentsForDoctor(doctor);
+
+    print('\n🛠️ === MANAGE APPOINTMENTS ===');
+    if (myAppointments.isEmpty) {
+      print('📭 No appointments found.');
+      _pressEnterToContinue();
+      return;
+    }
+
+    for (var i = 0; i < myAppointments.length; i++) {
+      final appt = myAppointments[i];
+      final patientName = doctorService.getPatientName(appt.patientId);
+      print(
+          '\n${i + 1}. ${_getStatusEmoji(appt.appointmentStatus)} Appointment #${appt.appointmentId}');
+      print('   Patient: $patientName');
+      print(
+          '   Date: ${doctorService.formatDate(appt.dateTime)} at ${doctorService.formatTime(appt.dateTime)}');
+      print('   Status: ${appt.appointmentStatus.name.toUpperCase()}');
+    }
+
+    stdout.write('\nSelect appointment number: ');
+    final idxStr = stdin.readLineSync();
+    final idx = int.tryParse(idxStr ?? '');
+    if (idx == null || idx < 1 || idx > myAppointments.length) {
+      print('❌ Invalid selection.');
+      _pressEnterToContinue();
+      return;
+    }
+
+    final selected = myAppointments[idx - 1];
+    print('\nActions:');
+    print('1. Approve');
+    print('2. Reject');
+    print('3. Cancel');
+    print('4. Delete');
+    print('5. Back');
+    stdout.write('Enter your choice: ');
+    final action = stdin.readLineSync();
+
+    bool ok = false;
+    switch (action) {
+      case '1':
+        ok = doctorService.approveAppointment(doctor, selected.appointmentId);
+        print(ok ? '✅ Approved.' : '❌ Cannot approve.');
+        break;
+      case '2':
+        ok = doctorService.rejectAppointment(doctor, selected.appointmentId);
+        print(ok ? '✅ Rejected.' : '❌ Cannot reject.');
+        break;
+      case '3':
+        ok = doctorService.cancelAppointment(doctor, selected.appointmentId);
+        print(ok ? '✅ Canceled.' : '❌ Cannot cancel.');
+        break;
+      case '4':
+        ok = doctorService.deleteAppointment(doctor, selected.appointmentId);
+        print(ok ? '✅ Deleted.' : '❌ Cannot delete.');
+        break;
+      case '5':
+        return;
+      default:
+        print('❌ Invalid choice.');
+        break;
+    }
+
     _pressEnterToContinue();
   }
 
@@ -198,7 +267,8 @@ class DoctorDashboard {
     if (!ok) {
       print('❌ Slot is invalid or already exists.');
     } else {
-      print('✅ Slot added: ${doctorService.formatDate(dt)} ${doctorService.formatTime(dt)}');
+      print(
+          '✅ Slot added: ${doctorService.formatDate(dt)} ${doctorService.formatTime(dt)}');
     }
     _pressEnterToContinue();
   }
@@ -214,7 +284,8 @@ class DoctorDashboard {
     print('\n🗓️ Select a slot to remove:');
     for (var i = 0; i < slots.length; i++) {
       final s = slots[i];
-      print('${i + 1}. ${doctorService.formatDate(s)} ${doctorService.formatTime(s)}');
+      print(
+          '${i + 1}. ${doctorService.formatDate(s)} ${doctorService.formatTime(s)}');
     }
 
     stdout.write('Enter number: ');
