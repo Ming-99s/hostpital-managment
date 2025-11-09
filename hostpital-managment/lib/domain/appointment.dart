@@ -1,6 +1,6 @@
 import 'package:uuid/uuid.dart';
 
-enum AppointmentStatus { pending, reject, approved, canceled }
+enum AppointmentStatus { pending, rejected, approved, canceled }
 
 // Appointment class
 class Appointment {
@@ -18,8 +18,5 @@ class Appointment {
     required this.appointmentStatus,
   }) : appointmentId = appointmentId ?? Uuid().v4();
 
-  @override
-  String toString() {
-    return 'Appointment(id: $appointmentId, patientId: $patientId, doctorId: $doctorId, dateTime: $dateTime, status: $appointmentStatus)';
-  }
+
 }

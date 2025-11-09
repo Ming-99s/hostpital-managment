@@ -2,7 +2,7 @@ import 'dart:io';
 import '../domain/user.dart';
 import '../domain/patient.dart';
 import '../domain/doctor.dart';
-import '../domain/authService.dart';
+import '../domain/Service/authService.dart';
 import 'adminDashboard.dart';
 import 'patientDashboard.dart';
 import 'doctorDashboard.dart';

@@ -1,16 +1,6 @@
 {
   "users": [
     {
-      "id": "313d516d-266d-49be-a886-58b5f4c00c6f",
-      "username": "ming3",
-      "password": "pass123",
-      "type": "UserType.patient",
-      "age": 12,
-      "address": "phnom penh",
-      "email": "lyming@gmail.com",
-      "gender": "Gender.male"
-    },
-    {
       "id": "313d516d-266d-49be-a886-58bsadf4c00c6f",
       "username": "ming2",
       "password": "pass123",
@@ -25,7 +15,7 @@
       "email": "drsmith@clinic.com",
       "specialty": "Specialty.cardiology",
       "availableSlots": [
-        "2025-11-07T10:00:00.000"
+        "2025-11-06T09:00:00.000"
       ]
     },
     {
@@ -36,6 +26,16 @@
       "age": 12,
       "address": "cnasd",
       "email": "cnsaj",
+      "gender": "Gender.male"
+    },
+    {
+      "id": "0a94d62a-38c7-4275-8280-14a883210da0",
+      "username": "ReachJOJO",
+      "password": "123",
+      "type": "UserType.patient",
+      "age": 12,
+      "address": "dcjndac",
+      "email": "reach@gmail.com",
       "gender": "Gender.male"
     }
   ]

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
-import '../domain/appointment.dart';
+import '../../domain/appointment.dart';
 
 class AppointmentRepository {
   final String filePath;

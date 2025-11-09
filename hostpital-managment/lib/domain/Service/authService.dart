@@ -1,7 +1,7 @@
-import 'user.dart';
-import 'patient.dart';
-import 'doctor.dart';
-import 'appointmentManager.dart';
+import '../user.dart';
+import '../patient.dart';
+import '../doctor.dart';
+import '../Service/appointmentManager.dart';
 class AuthService {
   late List<User> _users;
   late AppointmentManager appointmentManager;
