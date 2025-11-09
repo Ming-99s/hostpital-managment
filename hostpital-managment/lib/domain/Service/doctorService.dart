@@ -64,6 +64,35 @@ class DoctorService {
     return patient?.username ?? '[Unknown Patient]';
   }
 
+  // Doctor actions on appointments (wrapping AppointmentManager with ownership checks)
+  bool approveAppointment(Doctor doctor, String appointmentId) {
+    final appt = appointmentManager.getAppointmentById(appointmentId);
+    if (appt == null || appt.doctorId != doctor.id) return false;
+    appointmentManager.approveAppointment(appointmentId);
+    return true;
+  }
+
+  bool rejectAppointment(Doctor doctor, String appointmentId) {
+    final appt = appointmentManager.getAppointmentById(appointmentId);
+    if (appt == null || appt.doctorId != doctor.id) return false;
+    appointmentManager.rejectAppointment(appointmentId);
+    return true;
+  }
+
+  bool cancelAppointment(Doctor doctor, String appointmentId) {
+    final appt = appointmentManager.getAppointmentById(appointmentId);
+    if (appt == null || appt.doctorId != doctor.id) return false;
+    appointmentManager.cancelAppointment(appointmentId);
+    return true;
+  }
+
+  bool deleteAppointment(Doctor doctor, String appointmentId) {
+    final appt = appointmentManager.getAppointmentById(appointmentId);
+    if (appt == null || appt.doctorId != doctor.id) return false;
+    appointmentManager.removeAppointment(appointmentId);
+    return true;
+  }
+
   // Availability management
   bool addTimeSlot(Doctor doctor, DateTime dt) {
     final now = DateTime.now();

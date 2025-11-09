@@ -2,10 +2,24 @@
   "appointments": [
     {
       "appointmentId": "a1",
-      "patientId": "32c5d06a-ed78-4788-b14c-eb77face9409",
-      "doctorId": "45be3931-716d-4884-a796-9e61b8066a9c",
-      "dateTime": "2025-11-10T09:00:00.000",
+      "patientId": "586bae66-bc18-4528-8263-33e15efe8a6b",
+      "doctorId": "476ece1d-d670-479b-8847-f3f4032e4c0d",
+      "dateTime": "2025-11-09T17:46:31.170023",
+      "appointmentStatus": "AppointmentStatus.approved"
+    },
+    {
+      "appointmentId": "a2",
+      "patientId": "586bae66-bc18-4528-8263-33e15efe8a6b",
+      "doctorId": "476ece1d-d670-479b-8847-f3f4032e4c0d",
+      "dateTime": "2025-11-09T19:16:31.170023",
       "appointmentStatus": "AppointmentStatus.pending"
+    },
+    {
+      "appointmentId": "a3",
+      "patientId": "586bae66-bc18-4528-8263-33e15efe8a6b",
+      "doctorId": "476ece1d-d670-479b-8847-f3f4032e4c0d",
+      "dateTime": "2025-11-08T17:16:31.170023",
+      "appointmentStatus": "AppointmentStatus.approved"
     }
   ]
 }

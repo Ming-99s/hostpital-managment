@@ -7,8 +7,10 @@ import 'domain/Service/appointmentManager.dart';
 
 void main() {
   // Load users and appointments from JSON
-  UserRepository userRepo = UserRepository('data/users.json');
-  AppointmentRepository appRepo = AppointmentRepository('data/appointments.json');
+  // Use paths relative to the project root (outer folder)
+  // so running `dart lib/main.dart` from the root works.
+  UserRepository userRepo = UserRepository('hostpital-managment/lib/data/users.json');
+  AppointmentRepository appRepo = AppointmentRepository('hostpital-managment/lib/data/appointments.json');
 
   UserManager userManager = UserManager(userRepository: userRepo);
 

@@ -7,6 +7,7 @@ import '../domain/Service/authService.dart';
 import '../domain/user.dart';
 import 'adminDashboard.dart';
 import 'patientDashboard.dart';
+import 'doctorDashboard.dart';
 
 class AuthUI {
   final AuthService authService;
@@ -301,6 +302,8 @@ class AuthUI {
         adminDashboard.startAdminDashboard(user);
         break;
       case UserType.doctor:
+        DoctorDashboard doctorDashboard = DoctorDashboard(appointmentManager, userManager);
+        doctorDashboard.startDoctorDashboard(user);
         break;
       case UserType.patient:
         PatientDashboard patientDashboard = PatientDashboard(appointmentManager, userManager);
