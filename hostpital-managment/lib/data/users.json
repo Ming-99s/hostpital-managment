@@ -47,6 +47,26 @@
       "address": "phnomPenh",
       "email": "ming@gmail.ocm",
       "gender": "Gender.male"
+    },
+    {
+      "id": "3cfbba2e-a025-4146-95f6-587c4e41005a",
+      "username": "test_patient_1762668743237",
+      "password": "p@ss",
+      "type": "UserType.patient",
+      "age": 30,
+      "address": "123 Test Street",
+      "email": "patient_test",
+      "gender": "Gender.male"
+    },
+    {
+      "id": "12c4e8df-0f3e-4e8c-aedd-3b31581b9480",
+      "username": "test_doctor_1762668743255",
+      "password": "p@ss",
+      "type": "UserType.doctor",
+      "address": "456 Clinic Road",
+      "email": "doctor_test",
+      "specialty": "Specialty.cardiology",
+      "availableSlots": []
     }
   ]
 }
