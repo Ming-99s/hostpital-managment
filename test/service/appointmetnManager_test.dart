@@ -4,8 +4,6 @@ import '../../hostpital-managment/lib/data/Repository/User_file.dart';
 import '../../hostpital-managment/lib/data/Repository/appointments_file.dart';
 import '../../hostpital-managment/lib/domain/Service/userManager.dart';
 import '../../hostpital-managment/lib/domain/Service/appointmentManager.dart';
-import '../../hostpital-managment/lib/domain/doctor.dart';
-import '../../hostpital-managment/lib/domain/patient.dart';
 import '../../hostpital-managment/lib/domain/appointment.dart';
 
 

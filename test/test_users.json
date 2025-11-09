@@ -9,7 +9,7 @@
       "email": "reach@gmail.com",
       "specialty": "Specialty.cardiology",
       "availableSlots": [
-        "2025-11-10T09:00:00.000"
+        "2025-11-09T22:49:19.683824"
       ]
     },
     {
@@ -21,6 +21,26 @@
       "address": "123 Main St",
       "email": "reach@gmail.com",
       "gender": "Gender.male"
+    },
+    {
+      "id": "a91f8323-7e9a-44b3-8955-a0999310e48c",
+      "username": "haha",
+      "password": "1234",
+      "type": "UserType.patient",
+      "age": 22,
+      "address": "Phnom Penh",
+      "email": "alice@example.com",
+      "gender": "Gender.female"
+    },
+    {
+      "id": "dfc24827-7ca0-4d01-aecd-c7d4da176cc3",
+      "username": "Dr. Bob",
+      "password": "abcd",
+      "type": "UserType.doctor",
+      "address": "Siem Reap",
+      "email": "bob@example.com",
+      "specialty": "Specialty.cardiology",
+      "availableSlots": []
     }
   ]
 }
