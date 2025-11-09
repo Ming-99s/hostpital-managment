@@ -1,14 +1,12 @@
 import '../user.dart';
 import '../patient.dart';
 import '../doctor.dart';
-import '../Service/appointmentManager.dart';
 import 'userManager.dart';
 
 class AuthService {
-  final AppointmentManager appointmentManager;
   final UserManager userManager;
 
-  AuthService({required this.userManager, required this.appointmentManager});
+  AuthService({required this.userManager});
 
   User? registerPatient(String username, String password, String email, int age ,String address,Gender gender) {
     try {
