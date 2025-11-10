@@ -1,24 +1,26 @@
 {
   "users": [
     {
-      "id": "476ece1d-d670-479b-8847-f3f4032e4c0d",
-      "username": "dr_filter",
-      "password": "secret",
+      "id": "9239bf7c-58c7-4038-b677-d0868a4c0906",
+      "username": "dr_one",
+      "password": "onepass",
       "type": "UserType.doctor",
-      "address": "123 Street",
-      "email": "filter@test.com",
-      "specialty": "Specialty.cardiology",
+      "address": "One St",
+      "email": "one@clinic.test",
+      "specialty": "Specialty.neurology",
       "availableSlots": []
     },
     {
-      "id": "586bae66-bc18-4528-8263-33e15efe8a6b",
-      "username": "pat1",
-      "password": "p@ss",
-      "type": "UserType.patient",
-      "age": 30,
-      "address": "Road 1",
-      "email": "pat@test.com",
-      "gender": "Gender.male"
+      "id": "b42c0ff0-c8ee-4676-97ee-0ebad89cd0f3",
+      "username": "dr_two",
+      "password": "twopass",
+      "type": "UserType.doctor",
+      "address": "Two St",
+      "email": "two@clinic.test",
+      "specialty": "Specialty.orthopedics",
+      "availableSlots": [
+        "2030-12-25T15:00:00.000"
+      ]
     }
   ]
 }
