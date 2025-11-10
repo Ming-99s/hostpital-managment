@@ -1,6 +1,5 @@
 import '../appointment.dart';
 import '../doctor.dart';
-import '../user.dart';
 import 'appointmentManager.dart';
 import 'userManager.dart';
 
@@ -36,24 +35,6 @@ class DoctorService {
   List<Appointment> getAppointmentsForDoctor(Doctor doctor) {
     final appointments = appointmentManager.getAllAppointment();
     final filtered = appointments.where((a) => a.doctorId == doctor.id).toList();
-    filtered.sort((a, b) => a.dateTime.compareTo(b.dateTime));
-    return filtered;
-  }
-
-  List<Appointment> getTodaysAppointments(Doctor doctor, DateTime now) {
-    final appointments = getAppointmentsForDoctor(doctor);
-    final filtered = appointments.where((a) =>
-      a.dateTime.year == now.year &&
-      a.dateTime.month == now.month &&
-      a.dateTime.day == now.day
-    ).toList();
-    filtered.sort((a, b) => a.dateTime.compareTo(b.dateTime));
-    return filtered;
-  }
-
-  List<Appointment> getAppointmentHistory(Doctor doctor, DateTime now) {
-    final appointments = getAppointmentsForDoctor(doctor);
-    final filtered = appointments.where((a) => a.dateTime.isBefore(now)).toList();
     filtered.sort((a, b) => a.dateTime.compareTo(b.dateTime));
     return filtered;
   }

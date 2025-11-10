@@ -3,9 +3,7 @@ import 'dart:io';
 import 'package:test/test.dart';
 
 import '../../hostpital-managment/lib/data/Repository/User_file.dart';
-import '../../hostpital-managment/lib/data/Repository/appointments_file.dart';
 import '../../hostpital-managment/lib/domain/Service/userManager.dart';
-import '../../hostpital-managment/lib/domain/Service/appointmentManager.dart';
 import '../../hostpital-managment/lib/domain/Service/authService.dart';
 import '../../hostpital-managment/lib/domain/patient.dart';
 import '../../hostpital-managment/lib/domain/user.dart';
@@ -14,8 +12,6 @@ void main() {
   late File tmpUserFile;
   late UserRepository userRepo;
   late UserManager userManager;
-  late AppointmentRepository appointmentRepo;
-  late AppointmentManager appointmentManager;
   late AuthService authService;
 
   setUp(() {
@@ -27,9 +23,6 @@ void main() {
     userRepo = UserRepository(tmpUserFile.path);
     userManager = UserManager(userRepository: userRepo);
 
-    // Appointment data is not modified in these tests; use the shared fixture
-    appointmentRepo = AppointmentRepository('test/test_appointments.json');
-    appointmentManager = AppointmentManager(appointmentRepo, userManager);
     authService = AuthService(userManager: userManager);
   });
 
@@ -41,7 +34,7 @@ void main() {
 
   group('UserRepository login and JSON persistence', () {
     test('Login succeeds with valid credentials', () {
-      final user = authService.login('dr_one', 'onepass');
+      final user = authService.login('drsmith', 'docpass456');
       expect(user, isNotNull);
       expect(user!.username, equals('dr_one'));
       expect(user.type, equals(UserType.doctor));
@@ -88,6 +81,3 @@ void main() {
   });
 }
 
-extension FirstOrNull<E> on Iterable<E> {
-  E? get firstOrNull => this.isEmpty ? null : this.first;
-}
