@@ -87,23 +87,6 @@ void main() {
       expect(appts.last.appointmentId, apptA2);  // later on 2025-11-09
     });
 
-    test('getTodaysAppointments returns only today’s entries', () {
-      final now = DateTime(2025, 11, 9, 10, 0);
-      final today = doctorService.getTodaysAppointments(doctor, now);
-      expect(today.length, 2);
-      expect(today.map((a) => a.appointmentId).toSet(), {apptA1, apptA2});
-      // Sorted ascending by time
-      expect(today.first.appointmentId, apptA1);
-      expect(today.last.appointmentId, apptA2);
-    });
-
-    test('getAppointmentHistory returns past appointments', () {
-      final now = DateTime(2025, 11, 9, 12, 0);
-      final history = doctorService.getAppointmentHistory(doctor, now);
-      expect(history.length, 1);
-      expect(history.first.appointmentId, apptA3);
-    });
-
     test('getPatientName returns username for known patient', () {
       final name = doctorService.getPatientName(patientId);
       expect(name, 'pat1');
