@@ -10,7 +10,6 @@ class UserRepository {
 
   UserRepository(this.filePath);
 
-  // -------------------- Read all users --------------------
   List<User> readUsers() {
     final file = File(filePath);
 
@@ -68,13 +67,12 @@ class UserRepository {
     }).toList();
   }
 
-  // -------------------- Write all users --------------------
     void writeUsers(List<User> users) {
     final file = File(filePath);
   
     final data = {
       'users': users.map((u) {
-        final Map<String, dynamic> base = { // <- change here
+        final Map<String, dynamic> base = { 
           'id': u.id,
           'username': u.username,
           'password': u.password,
@@ -83,7 +81,7 @@ class UserRepository {
   
         if (u is Patient) {
           base.addAll({
-            'age': u.age, // int is fine now
+            'age': u.age, 
             'address': u.address,
             'email': u.email,
             'gender': u.gender.toString(),
@@ -98,8 +96,6 @@ class UserRepository {
                 .toList(),
           });
         }
-  
-        // Admin has no extra fields
   
         return base;
       }).toList()

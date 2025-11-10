@@ -1,5 +1,4 @@
 import '../../data/Repository/User_file.dart';
-import '../admin.dart';
 import '../user.dart';
 import '../doctor.dart';
 import '../patient.dart';
@@ -81,9 +80,11 @@ class UserManager {
         'name': patient.username,
         'email': patient.email,
         'age': patient.age.toString(),
+        'address' : patient.address,
+        'gender' : patient.gender.name.toString(),
       };
     }
-    return {'name': 'Unknown Patient', 'email': 'N/A', 'age': 'N/A'};
+    return {'name': 'Unknown Patient', 'email': 'N/A', 'age': 'N/A' , 'address' : 'Unknown' , 'gender' : 'Unknown'};
   }
 
   Map<String, String> getDoctorInfo(String doctorId) {
@@ -93,9 +94,10 @@ class UserManager {
         'name': doctor.username,
         'specialty': formatSpecialty(doctor.specialty),
         'email': doctor.email,
+        'address' : doctor.address
       };
     }
-    return {'name': 'Unknown Doctor', 'specialty': 'Unknown', 'email': 'N/A'};
+    return {'name': 'Unknown Doctor', 'specialty': 'Unknown', 'email': 'N/A' ,'address' : 'Unknown'};
   }
 
   bool isValidEmail(String email) {
