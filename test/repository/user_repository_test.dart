@@ -12,8 +12,6 @@ void main() {
   late File tmpUserFile;
   late UserRepository userRepo;
   late UserManager userManager;
-  late AppointmentRepository appointmentRepo;
-  late AppointmentManager appointmentManager;
   late AuthService authService;
 
   setUp(() {
@@ -38,7 +36,8 @@ void main() {
     test('Login succeeds with valid credentials', () {
       final user = authService.login('drsmith', 'docpass456');
       expect(user, isNotNull);
-      expect(user!.username, equals('dr_one'));
+      // Expect the username present in test/test_users.json
+      expect(user!.username, equals('drsmith'));
       expect(user.type, equals(UserType.doctor));
     });
 
