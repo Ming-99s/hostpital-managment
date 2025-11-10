@@ -12,8 +12,6 @@ void main() {
   late File tmpUserFile;
   late UserRepository userRepo;
   late UserManager userManager;
-  late AppointmentRepository appointmentRepo;
-  late AppointmentManager appointmentManager;
   late AuthService authService;
 
   setUp(() {
